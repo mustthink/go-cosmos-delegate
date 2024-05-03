@@ -1,0 +1,20 @@
+version: '3'
+
+tasks:
+  migrate:
+    aliases:
+      - migrations
+    desc: "Migrations to db"
+    cmd: "go run ./cmd/migrations -storage-path=postgres://user:pass@localhost:5432/default -migrations-path=./migrations"
+  run:
+    desc: "Run application"
+    cmd: "go run ./cmd/parser -config=./config/local.yaml"
+  docker-postgres:
+    desc: "Run postgres in docker"
+    cmds: ["docker-compose up postgres"]
+  docker-migrations:
+    desc: "Run migrations in docker"
+    cmds: ["docker-compose up migrations"]
+  docker-parser:
+    desc: "Run in docker"
+    cmds: ["docker-compose up parser"]

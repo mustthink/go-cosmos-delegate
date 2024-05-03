@@ -1,0 +1,12 @@
+env: "local"
+block_time: 1s
+database:
+  host: "postgres"
+  port: 5432
+  user: "user"
+  pass: "pass"
+  db: "default"
+grpc:
+  host: "cosmos-grpc.publicnode.com"
+  port: 443
+  timeout: 10

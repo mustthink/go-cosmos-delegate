@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  migrations:
+    build:
+      context: .
+      dockerfile: Dockerfile-Migrations
+    depends_on:
+        - postgres
+  parser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+        - postgres
+  postgres:
+    image: postgres:16
+    environment:
+        POSTGRES_USER: "user"
+        POSTGRES_PASSWORD: "pass"
+        POSTGRES_DB: "default"
+    ports:
+        - "5432:5432"
